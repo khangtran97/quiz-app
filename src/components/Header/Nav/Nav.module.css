@@ -1,0 +1,35 @@
+.NavigationItems {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: inline-block;
+  position: absolute;
+  top: 25px;
+  right: 25px;
+}
+
+.NavigationItems li {
+  float: left;
+}
+
+.NavigationItems a {
+  padding: 10px 15px;
+  text-transform: uppercase;
+  text-align: center;
+  display: block;
+  cursor: pointer;
+}
+
+.NavigationItems a:hover {
+  color: #718daa;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}

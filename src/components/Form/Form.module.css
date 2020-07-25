@@ -1,0 +1,7 @@
+.Form {
+  width: 500px;
+  height: 450px;
+  border: 1px solid black;
+  box-sizing: border-box;
+  text-align: left;
+}
