@@ -1,3 +1,12 @@
+import {
+  SET_READ_ALL, 
+  SET_AGREE, 
+  SET_COUNT_DOWN, 
+  SET_STOP_COUNT_DOWN 
+} from './actions';
+
+import moment from 'moment';
+
 const initialState = {
   User: {
     user_name: '',
@@ -50,7 +59,7 @@ const initialState = {
 
   Timer: {
     total_time: '20:00',
-    remain_time: '00:00',
+    remain_time: '20:00',
     actual_time: ''
   },
 }
@@ -74,6 +83,43 @@ const reducer = (state = initialState, action) => {
           option_2
         }
       };
+    }
+    case SET_READ_ALL: {
+      const { isReadAll } = action.payload;
+      return {
+        ...state,
+        Acknowlegde: {
+          ...state.Acknowlegde,
+          is_read_all: isReadAll,
+        },
+      }
+    }
+    case SET_AGREE: {
+      const { isAgree } = action.payload;
+      return {
+        ...state,
+        Acknowlegde: {
+          ...state.Acknowlegde,
+          is_agreed: isAgree,
+        },
+      }
+    }
+    case SET_COUNT_DOWN: {
+      const totalTime = moment(state.Timer.total_time, 'mm:ss');
+      const remainTime = moment(state.Timer.remain_time, 'mm:ss').subtract(1, "seconds");
+      const actualTime = moment(totalTime).subtract(remainTime).format('mm:ss');
+      debugger
+      return {
+        ...state,
+        Timer: {
+          ...state.Timer,
+          actual_time: actualTime,
+          remain_time: remainTime.format('mm:ss')
+        }
+      }
+    }
+    case SET_STOP_COUNT_DOWN: {
+      return state;
     }
     default: {
       return state;
